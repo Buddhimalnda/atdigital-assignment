@@ -1,113 +1,124 @@
+"use client";
+import Footer, { FooterProps } from "@/components/footer";
+import Hero from "@/components/hero";
+import ATDLogo from "@/components/icons/Logo";
+import ATDTitle from "@/components/icons/Title";
+import Navbar, { NavbarProps } from "@/components/navbar";
+import Service, { ServiceProps } from "@/components/services";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import img1 from "@/public/assets/img/web.png";
+import img2 from "@/public/assets/img/search.png";
+import FrequentlyQuestions from "@/components/frequentlyQuestions";
 
 export default function Home() {
+  const __navbar = {
+    logo: <ATDTitle />,
+    menus: [
+      {
+        name: "Home",
+        path: "/",
+      },
+      {
+        name: "About",
+        path: "/about",
+      },
+      {
+        name: "Services",
+        path: "/services",
+      },
+      {
+        name: "Contact",
+        path: "/contact",
+      },
+    ],
+  };
+  const __footer = {
+    logo: <ATDTitle />,
+    description:
+      "Your goal is our target. Not anything in between. We use online marketing platforms and tools to achieve single objective - your business results.",
+    technologies: [
+      {
+        name: "ReactJS",
+      },
+      {
+        name: "Gatsby",
+      },
+      {
+        name: "NextJS",
+      },
+      {
+        name: "NodeJS",
+      },
+    ],
+    services: [
+      {
+        name: "Social media Marketing",
+        url: "/services/web-development",
+      },
+      {
+        name: "Web & Mobile App Development",
+        url: "/services/mobile-development",
+      },
+      {
+        name: "Data & Analytics",
+        url: "/services/ui-ux-design",
+      },
+    ],
+    menus: [
+      {
+        name: "Privacy Policy",
+        path: "#",
+      },
+      {
+        name: "Terms of Service",
+        path: "#",
+      },
+    ],
+  };
+  const services: ServiceProps[] = [
+    {
+      title: "Web & Mobile App Development",
+      description:
+        "Your web and mobile Apps are pieces of the puzzle to grow your business. We use frameworks which tailor content and engagement methods to respond to different intents shown by your potential customers who interact with your business online.",
+      url: "/services/web-development",
+      img: img1.src,
+    },
+    {
+      title: "Digital Strategy Consulting",
+      description:
+        "Your digital strategy should complement the overall marketing strategy of the company. In online marketing, each component will never work in isolation and every business needs a different mix. We provide a clear concept and strategic overview to find the most efficient model for your business.",
+      url: "/services/mobile-development",
+      img: img2.src,
+      isRightSideImg: true,
+    },
+  ];
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+    <main className="overflow-hidden">
+      <Navbar logo={__navbar.logo} menus={__navbar.menus} />
+      <Hero />
+      <div className="services">
+        {services.map((item, index) => (
+          <Service
+            description={item.description}
+            img={item.img}
+            title={item.title}
+            url={item.url}
+            key={index}
+            isRightSideImg={item?.isRightSideImg}
+          />
+        ))}
       </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      <section>
+        <FrequentlyQuestions />
+      </section>
+      <Footer
+        logo={__footer.logo}
+        description={__footer.description}
+        technologies={__footer.technologies}
+        services={__footer.services}
+        menus={__footer.menus}
+      />
     </main>
   );
 }

@@ -1,0 +1,160 @@
+.container {
+  @apply flex justify-between items-center;
+}
+
+nav {
+  @apply max-sm:px-10;
+  .menu {
+    .mobile-nav {
+      transition: all 0.5s ease-in-out;
+      .mobile-nav-btn {
+        @apply relative w-6 h-6  cursor-pointer;
+        span {
+          @apply block w-7 h-1 bg-wizard-white my-1 rounded-lg;
+        }
+        &.active-mobile-menu {
+          span {
+            @apply bg-tricorn-black;
+            transition: all 0.5s ease-in-out;
+            &:nth-child(1) {
+              @apply transform rotate-45 translate-y-2;
+            }
+            &:nth-child(2) {
+              @apply opacity-0;
+            }
+            &:nth-child(3) {
+              @apply transform -rotate-45 -translate-y-2;
+            }
+          }
+        }
+      }
+    }
+    .mobile-menu {
+      @apply fixed top-0 left-0 w-0 h-0 bg-[#fff] z-40 flex flex-col items-start text-tricorn-black;
+      transition: all 0.5s ease-in-out;
+      a {
+        @apply block text-center py-5 text-2xl;
+        &:hover {
+          @apply text-acier-200;
+        }
+      }
+      &.active {
+        transition: all 0.5s ease-in-out;
+        @apply w-full h-full;
+      }
+    }
+  }
+}
+
+footer {
+  @apply bg-primary text-wizard-white max-sm:px-10 sm:px-20 sm:py-8 font-inter w-full;
+  section {
+    @apply flex justify-between items-center  text-wizard-white max-md:flex-col;
+    .about {
+      @apply my-5 max-md:w-full;
+      .description {
+        @apply text-[16px] font-lato w-[413px] mt-3;
+      }
+    }
+    .links {
+      @apply sm:flex justify-between items-center w-[530px] max-md:w-full ;
+      .sec {
+        @apply flex flex-col items-start md:mx-8 w-[197px] max-sm:my-5;
+        h1 {
+          @apply text-[21px];
+        }
+        a {
+          @apply block text-[14px] my-1;
+          &:hover {
+            @apply text-acier-200;
+          }
+        }
+        .item {
+          @apply block text-[14px] my-1;
+          &:hover {
+            @apply text-acier-200;
+          }
+        }
+      }
+    }
+  }
+  .bottom-nav {
+    @apply flex justify-center items-center w-full flex-col mt-5;
+    .hr {
+      @apply md:w-1/2 h-[1px] bg-wizard-white w-full;
+    }
+    .menus {
+      @apply flex justify-around items-center ;
+      a {
+        @apply block text-[14px] my-1 mx-5;
+        &:hover {
+          @apply text-acier-200;
+        }
+      }
+    }
+  }
+}
+
+.hero {
+  .content {
+    @apply max-md:w-full md:w-[630px] md:absolute  md:top-[354px] md:left-[80px] transform px-[40px] h-[306px] bg-primary pt-[24px] pb-[32px] text-wizard-white max-md:flex max-md:flex-col max-md:h-full;
+    background: rgb(120, 191, 145);
+    background: linear-gradient(
+      90deg,
+      rgba(77, 202, 121, 1) 0%,
+      rgba(28, 189, 221, 1) 100%
+    );
+    h1 {
+      @apply text-[48px] font-inter font-[700];
+      letter-spacing: -2%;
+      line-height: 48px;
+    }
+    .btn{
+        @apply w-[214px] bg-secondary text-center px-[20px] py-[12px] rounded-[4px] h-[38px] my-2 shadow-md shadow-dark-200 cursor-pointer;
+        &:hover {
+            @apply bg-acier-200;
+        }
+        letter-spacing: -2%;
+        line-height: 14px;
+    }
+  }
+}
+
+.services{
+  @apply w-full ;
+  .service{
+    @apply flex max-sm:flex-col items-center  justify-between max-md:px-10 px-20 ;
+    .img{
+      @apply w-[346px] ;
+    }
+    .content{
+      @apply md:w-[542px];
+      h1{
+        @apply text-[24px] font-inter font-[700] text-primary my-5 max-md:text-center;
+      }
+      p{
+        @apply max-md:text-center text-[16px] font-lato text-acier-200 my-5;
+      }
+      .btn{
+        @apply w-[214px] bg-secondary text-center px-[20px] py-[12px] rounded-[4px] h-[38px] my-2  cursor-pointer max-md:flex max-md:justify-center max-md:items-center max-md:mx-auto;
+        &:hover {
+            @apply bg-acier-200;
+        }
+        letter-spacing: -2%;
+        line-height: 14px;
+      }
+    }
+  }
+}
+
+.frequently-questions{
+  .card{
+    .description{
+      @apply text-[16px] font-lato text-acier-200 my-5 hidden;
+      &.active{
+        @apply block;
+        transition: all 0.5s ease-in-out;
+      }
+    }
+  }
+}
