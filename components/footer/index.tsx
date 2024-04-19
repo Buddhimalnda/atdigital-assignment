@@ -58,9 +58,8 @@ const Footer = (props: FooterProps) => {
         <div className="hr"></div>
         <div className="menus">
           {props.menus.map((menu, index) => (
-            <div className="menu-item">
+            <div className="menu-item" key={index}>
               <Item
-                key={index}
                 item={menu.name}
                 isLink={true}
                 url={menu.path}
