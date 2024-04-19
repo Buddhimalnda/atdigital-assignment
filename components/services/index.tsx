@@ -11,17 +11,17 @@ export interface ServiceProps {
 const Service = (props: ServiceProps) => {
   const route = useRouter();
   return (
-    <div className="service">
-      {!props.isRightSideImg && (
-        <div className="img md:mr-52">
-          <Image
-            src={props.img}
-            alt="Web Development"
-            width={346}
-            height={346}
-          />
-        </div>
-      )}
+    <div
+      className={
+        "service " +
+        (props.isRightSideImg ? "flex-row-reverse" : "justify-between")
+      }
+    >
+      <div
+        className={"img  " + (props.isRightSideImg ? "md:ml-52" : "md:mr-52")}
+      >
+        <Image src={props.img} alt="Web Development" width={346} height={346} />
+      </div>
 
       <div className="content max-md:w-full">
         <h1>{props.title}</h1>
@@ -33,16 +33,6 @@ const Service = (props: ServiceProps) => {
           Learn more
         </div>
       </div>
-      {props.isRightSideImg && (
-        <div className="img md:ml-52">
-          <Image
-            src={props.img}
-            alt="Web Development"
-            width={346}
-            height={346}
-          />
-        </div>
-      )}
     </div>
   );
 };

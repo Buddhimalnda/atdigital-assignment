@@ -31,6 +31,10 @@ export default function Home() {
         name: "Contact",
         path: "/contact",
       },
+      {
+        name: "CAREERS",
+        path: "/CAREERS",
+      },
     ],
   };
   const __footer = {
